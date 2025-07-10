@@ -12,7 +12,7 @@ export const signupService = async (data: signupData) => {
         throw new Error('All Fields are Required');
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).lean();
     if (user) {
         throw new Error('User Already Exists');
     }
@@ -28,11 +28,16 @@ export const signupService = async (data: signupData) => {
         fullName, email, password: hashedPassword, role
     });
 
+    const token = jwt.sign({ id: newUser._id, role: newUser.role, email: newUser.email, fullName: newUser.fullName }, process.env.JWT_SECRET as string);
+
     return {
-        id: newUser._id,
-        fullName: newUser.fullName,
-        email: newUser.email,
-        role: newUser.role
+        token,
+        user: {
+            id: newUser._id,
+            fullName: newUser.fullName,
+            email: newUser.email,
+            role: newUser.role
+        }
     };
 }
 

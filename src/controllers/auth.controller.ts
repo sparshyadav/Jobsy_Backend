@@ -5,8 +5,8 @@ export const signupController = async (req: Request, res: Response) => {
     const data = req.body;
 
     try {
-        const user = await signupService(data);
-        res.status(201).json({ message: 'User Created Successfully', user });
+        const {user, token} = await signupService(data);
+        res.status(201).json({ message: 'User Created Successfully', token, user });
     }
     catch (error) {
         console.error(`Error during signup:`, error);
