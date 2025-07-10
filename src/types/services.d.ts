@@ -5,3 +5,7 @@ export interface signupData{
     role: string;
 }
 
+export interface loginData{
+    email: string;
+    password: string;
+}
