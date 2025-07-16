@@ -3,7 +3,6 @@ import { createCompanyService } from "../services/company.service";
 import { companyValidation } from "../validations/company.validations";
 
 export const createCompanyController = async (req: Request, res: Response) => {
-    console.log("REQUEST BODY: ", req.body.name, req.body.industry);
     companyValidation(req.body);
 
     const data = req.body;
