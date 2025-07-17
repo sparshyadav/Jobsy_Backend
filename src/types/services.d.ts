@@ -23,3 +23,24 @@ export interface companyData {
   twitter?: string;
   facebook?: string;
 }
+
+export interface JobData {
+  title: string;
+  description: string;
+  requirements?: string[];
+  skillsRequired?: string[];
+  company: string; 
+  postedBy: string; 
+  location: string;
+  salary: string;
+  department: "engineering" | "marketing" | "design" | "sales" | "hr" | "product";
+  workMode: "remote" | "onsite" | "hybrid";
+  employmentType: "full-time" | "part-time" | "contract" | "internship" | "temporary";
+  applicants?: string[]; 
+  experienceLevel: "entry" | "mid" | "senior" | "lead";
+  joiningDate: Date;
+  status?: "open" | "closed" | "paused";
+  views?: number;
+  applicationClosingDate: Date;
+  tags?: string[];
+}

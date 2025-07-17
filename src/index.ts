@@ -3,6 +3,7 @@ import cors from 'cors';
 import { connectDB } from "./config/db";
 import authRoutes from './routes/auth.routes';
 import companyRoutes from './routes/company.routes';
+import jobRoutes from './routes/job.routes';
 import { ENV_CONFIG } from "./config/env";
 
 const app=express();
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/company', companyRoutes);
+app.use('/api/v1/job', jobRoutes);
 
 app.listen(PORT, ()=>{
     connectDB();
